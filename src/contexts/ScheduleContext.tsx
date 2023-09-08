@@ -22,7 +22,7 @@ type ScheduleProviderProps = {
 
 export function ScheduleProvider({ children }: ScheduleProviderProps) {
   const [tasks, setTasks] = useState<TaskProps[]>([...toDoList]);
-  const [option, setOption] = useState<string>("");
+  const [option, setOption] = useState<string>("new");
 
   function optionSelected(option: string) {
     setOption(option);

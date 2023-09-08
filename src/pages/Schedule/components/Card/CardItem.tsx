@@ -1,17 +1,20 @@
 import { FaClock } from "react-icons/fa";
 import { IoIosJournal } from "react-icons/io";
-import { TaskProps, useSchedule } from "../../../../contexts/ScheduleContext";
+import { TaskProps } from "../../../../app/types/TaskProps";
+import { useSchedule } from "../../../../contexts/ScheduleContext";
 import { DeleteButton, EditButton } from "../Buttons";
 import {
   AlignIconAndText,
   CardBox,
   CardDescription,
   CardName,
+  Color,
   Content,
   EndTimeCard,
   OrganizeButtons,
   StartTimeCard,
 } from "./styles";
+import { Fragment } from "react";
 
 export function CardItem({
   id,
@@ -24,21 +27,33 @@ export function CardItem({
 
   return (
     <CardBox>
+      <Color />
       <Content>
         <CardName>{name}</CardName>
         <AlignIconAndText>
-          <IoIosJournal />
-          <CardDescription>{description}</CardDescription>
+          {description && (
+            <Fragment>
+              <IoIosJournal />
+              <CardDescription>{description}</CardDescription>
+            </Fragment>
+          )}
         </AlignIconAndText>
         <AlignIconAndText>
-          <FaClock />
-          {startTime && <StartTimeCard>{`${startTime}hrs`}</StartTimeCard>}
+          {startTime && (
+            <Fragment>
+              <FaClock />
+              <StartTimeCard>{`${startTime}hrs`}</StartTimeCard>
+            </Fragment>
+          )}
           {endTime && <EndTimeCard>{`- ${endTime}hrs`}</EndTimeCard>}
         </AlignIconAndText>
       </Content>
       <OrganizeButtons>
-        <EditButton onClick={() => optionSelected("edit")} />
-        <DeleteButton onClick={() => deleteTask(id)} />
+        <EditButton
+          onClick={() => optionSelected("edit")}
+          title="Editar Tarefa"
+        />
+        <DeleteButton onClick={() => deleteTask(id)} title="Apagar Tarefa" />
       </OrganizeButtons>
     </CardBox>
   );

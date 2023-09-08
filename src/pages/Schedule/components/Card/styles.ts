@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 
 export const CardBox = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,24 +10,15 @@ export const CardBox = styled.div`
   transition: all 0.2s;
   width: 600px;
   background-color: #f8f8ff;
-  border-style: solid;
-  border-width: 2px;
-  border-color: transparent;
   cursor: pointer;
   user-select: none;
-
-  &&:hover {
-    color: #f8f8ff;
-    border-color: #f8f8ff;
-    background-color: #4682b4;
-  }
 `;
 
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding: 8px 24px;
+  padding: 16px 48px;
 `;
 
 export const CardName = styled.div`
@@ -48,7 +40,6 @@ export const EndTimeCard = styled.div``;
 
 export const OrganizeButtons = styled.div`
   display: flex;
-  background-color: #f8f8ff;
   flex-direction: column;
   row-gap: 4px;
   padding: 8px;
@@ -61,4 +52,17 @@ export const OrganizeCards = styled.div`
   flex-direction: column;
   height: 100%;
   row-gap: 4px;
+`;
+
+const ColorSize = `16px`;
+const Margins = `16px`;
+
+export const Color = styled.div`
+  position: absolute;
+  border-radius: 100%;
+  background-color: green;
+  top: ${Margins};
+  left: ${Margins};
+  width: ${ColorSize};
+  height: ${ColorSize};
 `;

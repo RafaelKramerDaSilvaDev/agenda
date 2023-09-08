@@ -1,6 +1,5 @@
 import { useSchedule } from "../../contexts/ScheduleContext";
 import { Card } from "./components/Card";
-import { EditTask } from "./components/EditTask";
 import { Header } from "./components/Header";
 import { NewTask } from "./components/NewTask";
 import { CardContainer, Container } from "./styles";
@@ -14,7 +13,7 @@ export function Schedule() {
         <Header />
         <Card />
       </CardContainer>
-      {option === "edit" && <EditTask />}
+      {/* {option === "edit" && <EditTask />} */}
       {option === "new" && <NewTask />}
     </Container>
   );

@@ -7,7 +7,7 @@ export function Header() {
 
   return (
     <HeaderStylized>
-      <NewButton onClick={() => optionSelected("new")}>
+      <NewButton onClick={() => optionSelected("new")} title="Nova Tarefa">
         <BiAddToQueue size={20} color="white" />
       </NewButton>
     </HeaderStylized>

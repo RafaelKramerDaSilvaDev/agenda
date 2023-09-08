@@ -28,6 +28,7 @@ export const BaseButton = `
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   
+  
   &&:hover {
     scale: 1.04;
   }
