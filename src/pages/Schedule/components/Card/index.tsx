@@ -7,7 +7,7 @@ export function Card() {
 
   return (
     <OrganizeCards>
-      {tasks.map((item) => (
+      {tasks?.map((item) => (
         <CardItem
           key={item.id}
           id={item.id}

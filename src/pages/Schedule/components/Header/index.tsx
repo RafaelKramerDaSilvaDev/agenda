@@ -1,15 +1,14 @@
-import { BiAddToQueue } from "react-icons/bi";
 import { useSchedule } from "../../contexts/ScheduleContext";
-import { HeaderStylized, NewButton } from "./styles";
+import { BuildButton, NewButton } from "../Buttons";
+import { HeaderStylized } from "./styles";
 
 export function Header() {
-  const { optionSelected } = useSchedule();
+  const { optionSelected, insertMockedTasks } = useSchedule();
 
   return (
     <HeaderStylized>
-      <NewButton onClick={() => optionSelected("new")} title="Nova Tarefa">
-        <BiAddToQueue size={20} color="white" />
-      </NewButton>
+      <NewButton onClick={() => optionSelected("new")} title="Nova Tarefa" />
+      <BuildButton onClick={insertMockedTasks} title="Gerar Tarefas" />
     </HeaderStylized>
   );
 }

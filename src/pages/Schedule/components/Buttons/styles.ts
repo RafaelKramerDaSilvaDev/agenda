@@ -20,3 +20,13 @@ export const ClearButtonStylized = styled.button`
   ${BaseButton}
   background-color: #778899;
 `;
+
+export const NewButtonStylized = styled.button`
+  ${BaseButton}
+  background-color: #4682b4;
+`;
+
+export const BuildButtonStylized = styled.button`
+  ${BaseButton}
+  background-color: #A0522D;
+`;

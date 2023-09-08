@@ -29,7 +29,6 @@ export function CardItem({
 
   function handleEdit() {
     optionSelected("edit");
-    console.log("eu estou aqui");
 
     setTaskValues({
       id: id,

@@ -4,12 +4,13 @@ import { TaskProps } from "../../../app/types/TaskProps";
 import { toDoList } from "../constraints/toDoList";
 
 type ScheduleContextType = {
-  tasks: TaskProps[];
+  tasks: TaskProps[] | undefined;
   addTask(Task: Omit<TaskProps, "id">): void;
   updateTask: (Task: TaskProps) => void;
   deleteTask: (id: string) => void;
   option: string;
   optionSelected(option: string): void;
+  insertMockedTasks(): void;
 };
 
 const ScheduleContext = createContext<ScheduleContextType>(
@@ -21,7 +22,7 @@ type ScheduleProviderProps = {
 };
 
 export function ScheduleProvider({ children }: ScheduleProviderProps) {
-  const [tasks, setTasks] = useState<TaskProps[]>([...toDoList]);
+  const [tasks, setTasks] = useState<TaskProps[]>([]);
   const [option, setOption] = useState<string>("new");
 
   function optionSelected(option: string) {
@@ -33,17 +34,27 @@ export function ScheduleProvider({ children }: ScheduleProviderProps) {
       id: uuidv4(),
       ...Task,
     };
-    setTasks((prevTasks) => [...prevTasks, newTask]);
+    setTasks((prevTasks) => prevTasks && [...prevTasks, newTask]);
   }
 
   function updateTask(updatedTask: TaskProps) {
-    setTasks((prevTasks) =>
-      prevTasks.map((Task) => (Task.id === updatedTask.id ? updatedTask : Task))
+    setTasks(
+      (prevTasks) =>
+        prevTasks &&
+        prevTasks.map((Task) =>
+          Task.id === updatedTask.id ? updatedTask : Task
+        )
     );
   }
 
   function deleteTask(id: string) {
-    setTasks((prevTasks) => prevTasks.filter((Task) => Task.id !== id));
+    setTasks(
+      (prevTasks) => prevTasks && prevTasks.filter((Task) => Task.id !== id)
+    );
+  }
+
+  function insertMockedTasks() {
+    setTasks([...toDoList]);
   }
 
   return (
@@ -55,6 +66,7 @@ export function ScheduleProvider({ children }: ScheduleProviderProps) {
         deleteTask,
         option,
         optionSelected,
+        insertMockedTasks,
       }}
     >
       {children}
