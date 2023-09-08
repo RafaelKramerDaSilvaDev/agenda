@@ -16,7 +16,6 @@ export function Schedule() {
           <Header />
           <Card />
         </CardContainer>
-
         {option === "edit" && <EditTask />}
         {option === "new" && <NewTask />}
       </Container>

@@ -8,6 +8,7 @@ export const HeaderStylized = styled.div`
   border-radius: 2px;
   background-color: #f8f8ff;
   padding: 8px 24px;
+  width: 100%;
 `;
 
 export const NewButton = styled.div`

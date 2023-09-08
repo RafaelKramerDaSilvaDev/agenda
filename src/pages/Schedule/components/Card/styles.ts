@@ -8,10 +8,10 @@ export const CardBox = styled.div`
   border-radius: 2px;
   color: black;
   transition: all 0.2s;
-  width: 600px;
   background-color: #f8f8ff;
   cursor: pointer;
   user-select: none;
+  width: 100%;
 `;
 
 export const Content = styled.div`
