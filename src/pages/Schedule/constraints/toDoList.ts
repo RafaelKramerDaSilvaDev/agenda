@@ -1,4 +1,4 @@
-type TarefaProps = {
+type TaskProps = {
   id: string;
   name: string;
   description: string;
@@ -6,7 +6,7 @@ type TarefaProps = {
   endTime?: string;
 }[];
 
-export const listaDeTarefas: TarefaProps = [
+export const toDoList: TaskProps = [
   {
     id: "1",
     name: "Reunião de trabalho",

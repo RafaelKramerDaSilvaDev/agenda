@@ -1,4 +1,4 @@
-export type TarefaProps = {
+export type TaskProps = {
   id: string;
   name: string;
   description: string;

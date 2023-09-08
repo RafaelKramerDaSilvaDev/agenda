@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import { BaseButton } from "../../styles";
 
 export const CardBox = styled.div`
   display: flex;
@@ -54,21 +53,7 @@ export const OrganizeButtons = styled.div`
   row-gap: 4px;
   padding: 8px;
   margin-right: 8px;
-`;
-
-export const EditButton = styled.div`
-  ${BaseButton}
-  background-color: #DAA520;
-`;
-
-export const DeleteButton = styled.div`
-  ${BaseButton}
-  background-color: #CD5C5C;
-`;
-
-export const SaveButton = styled.div`
-  ${BaseButton}
-  background-color: #3CB371;
+  border-radius: 2px;
 `;
 
 export const OrganizeCards = styled.div`

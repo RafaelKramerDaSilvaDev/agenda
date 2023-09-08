@@ -1,21 +1,17 @@
-import { BiSolidEdit, BiSolidSave, BiSolidTrashAlt } from "react-icons/bi";
 import { FaClock } from "react-icons/fa";
 import { IoIosJournal } from "react-icons/io";
-import { useAgenda } from "../../../../contexts/AgendaContext";
+import { TaskProps, useSchedule } from "../../../../contexts/ScheduleContext";
+import { DeleteButton, EditButton } from "../Buttons";
 import {
   AlignIconAndText,
   CardBox,
   CardDescription,
   CardName,
   Content,
-  DeleteButton,
-  EditButton,
   EndTimeCard,
   OrganizeButtons,
-  SaveButton,
   StartTimeCard,
 } from "./styles";
-import { TarefaProps } from "../../types/TarefaProps";
 
 export function CardItem({
   id,
@@ -23,8 +19,8 @@ export function CardItem({
   description,
   startTime,
   endTime,
-}: TarefaProps) {
-  const { optionSelected, deleteTarefa } = useAgenda();
+}: TaskProps) {
+  const { optionSelected, deleteTask } = useSchedule();
 
   return (
     <CardBox>
@@ -41,15 +37,8 @@ export function CardItem({
         </AlignIconAndText>
       </Content>
       <OrganizeButtons>
-        <EditButton onClick={() => optionSelected("edit")}>
-          <BiSolidEdit size={20} color="white" />
-        </EditButton>
-        <DeleteButton onClick={() => deleteTarefa(id)}>
-          <BiSolidTrashAlt size={20} color="white" />
-        </DeleteButton>
-        <SaveButton onClick={() => optionSelected("save")}>
-          <BiSolidSave size={20} color="white" />
-        </SaveButton>
+        <EditButton onClick={() => optionSelected("edit")} />
+        <DeleteButton onClick={() => deleteTask(id)} />
       </OrganizeButtons>
     </CardBox>
   );

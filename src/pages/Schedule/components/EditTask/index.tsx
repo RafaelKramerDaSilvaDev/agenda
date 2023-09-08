@@ -1,9 +1,9 @@
 import { Container } from "./styles";
 
-export function NovaTarefa() {
+export function EditTask() {
   return (
     <Container>
-      <h1>NovaTarefa</h1>
+      <h1>EditaTarefa</h1>
       <input className="" type="text" />
       <input type="text" />
       <input type="text" />

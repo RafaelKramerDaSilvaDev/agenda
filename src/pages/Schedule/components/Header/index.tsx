@@ -1,9 +1,9 @@
 import { BiAddToQueue } from "react-icons/bi";
-import { useAgenda } from "../../../../contexts/AgendaContext";
+import { useSchedule } from "../../../../contexts/ScheduleContext";
 import { HeaderStylized, NewButton } from "./styles";
 
 export function Header() {
-  const { optionSelected } = useAgenda();
+  const { optionSelected } = useSchedule();
 
   return (
     <HeaderStylized>

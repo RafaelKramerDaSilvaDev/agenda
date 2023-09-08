@@ -1,13 +1,13 @@
-import { useAgenda } from "../../../../contexts/AgendaContext";
+import { useSchedule } from "../../../../contexts/ScheduleContext";
 import { CardItem } from "./CardItem";
 import { OrganizeCards } from "./styles";
 
 export function Card() {
-  const { tarefas } = useAgenda();
+  const { tasks } = useSchedule();
 
   return (
     <OrganizeCards>
-      {tarefas.map((item) => (
+      {tasks.map((item) => (
         <CardItem
           key={item.id}
           id={item.id}

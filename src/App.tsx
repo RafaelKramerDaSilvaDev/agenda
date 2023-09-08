@@ -1,22 +1,26 @@
+import { ChakraProvider } from "@chakra-ui/react";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./app/routes/router";
 import { GlobalStyle } from "./app/styles/GlobalStyle";
-import { AgendaProvider } from "./contexts/AgendaContext";
-import { Agenda } from "./pages/Agenda";
+import { ScheduleProvider } from "./contexts/ScheduleContext";
 
 function App() {
   return (
-    <AgendaProvider>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
-        <Agenda />
-        <GlobalStyle />
-      </div>
-    </AgendaProvider>
+    <ChakraProvider>
+      <ScheduleProvider>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        >
+          <RouterProvider router={router} />
+          <GlobalStyle />
+        </div>
+      </ScheduleProvider>
+    </ChakraProvider>
   );
 }
 
