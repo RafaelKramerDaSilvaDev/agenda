@@ -7,8 +7,10 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { InferType, object, string } from "yup";
+import { usePassValuesToEdit } from "../../contexts/PassValuesToEditContext";
 import { useSchedule } from "../../contexts/ScheduleContext";
 import { ClearButton, SaveButton } from "../Buttons";
 import { Container } from "./styles";
@@ -30,8 +32,9 @@ const schema = object({
 
 type FormData = InferType<typeof schema>;
 
-export function NewTask() {
-  const { addTask } = useSchedule();
+export function EditTask() {
+  const { updateTask } = useSchedule();
+  const { taskValues } = usePassValuesToEdit();
 
   const {
     register,
@@ -42,8 +45,19 @@ export function NewTask() {
     resolver: yupResolver(schema),
   });
 
+  useEffect(() => {
+    function setValuesInputs() {
+      setValue("name", taskValues.name);
+      setValue("description", taskValues.description);
+      setValue("startTime", taskValues.startTime);
+      setValue("endTime", taskValues.endTime);
+    }
+    setValuesInputs();
+  }, [taskValues]);
+
   function onSubmit(data: FormData) {
-    addTask(data);
+    const newUpdateTask = { id: taskValues.id, ...data };
+    updateTask(newUpdateTask);
   }
 
   function handleClearInputs() {

@@ -1,4 +1,4 @@
-import { useSchedule } from "../../../../contexts/ScheduleContext";
+import { useSchedule } from "../../contexts/ScheduleContext";
 import { CardItem } from "./CardItem";
 import { OrganizeCards } from "./styles";
 

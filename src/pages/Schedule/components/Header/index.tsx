@@ -1,5 +1,5 @@
 import { BiAddToQueue } from "react-icons/bi";
-import { useSchedule } from "../../../../contexts/ScheduleContext";
+import { useSchedule } from "../../contexts/ScheduleContext";
 import { HeaderStylized, NewButton } from "./styles";
 
 export function Header() {

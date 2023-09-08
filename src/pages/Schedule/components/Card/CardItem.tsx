@@ -1,7 +1,9 @@
+import { Fragment } from "react";
 import { FaClock } from "react-icons/fa";
 import { IoIosJournal } from "react-icons/io";
 import { TaskProps } from "../../../../app/types/TaskProps";
-import { useSchedule } from "../../../../contexts/ScheduleContext";
+import { usePassValuesToEdit } from "../../contexts/PassValuesToEditContext";
+import { useSchedule } from "../../contexts/ScheduleContext";
 import { DeleteButton, EditButton } from "../Buttons";
 import {
   AlignIconAndText,
@@ -14,7 +16,6 @@ import {
   OrganizeButtons,
   StartTimeCard,
 } from "./styles";
-import { Fragment } from "react";
 
 export function CardItem({
   id,
@@ -24,6 +25,20 @@ export function CardItem({
   endTime,
 }: TaskProps) {
   const { optionSelected, deleteTask } = useSchedule();
+  const { setTaskValues } = usePassValuesToEdit();
+
+  function handleEdit() {
+    optionSelected("edit");
+    console.log("eu estou aqui");
+
+    setTaskValues({
+      id: id,
+      name: name,
+      description: description,
+      startTime: startTime,
+      endTime: endTime,
+    });
+  }
 
   return (
     <CardBox>
@@ -49,10 +64,7 @@ export function CardItem({
         </AlignIconAndText>
       </Content>
       <OrganizeButtons>
-        <EditButton
-          onClick={() => optionSelected("edit")}
-          title="Editar Tarefa"
-        />
+        <EditButton onClick={handleEdit} title="Editar Tarefa" />
         <DeleteButton onClick={() => deleteTask(id)} title="Apagar Tarefa" />
       </OrganizeButtons>
     </CardBox>

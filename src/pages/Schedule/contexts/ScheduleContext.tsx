@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { TaskProps } from "../app/types/TaskProps";
-import { toDoList } from "../pages/Schedule/constraints/toDoList";
+import { TaskProps } from "../../../app/types/TaskProps";
+import { toDoList } from "../constraints/toDoList";
 
 type ScheduleContextType = {
   tasks: TaskProps[];

@@ -2,12 +2,12 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./app/routes/router";
 import { GlobalStyle } from "./app/styles/GlobalStyle";
-import { ScheduleProvider } from "./contexts/ScheduleContext";
+import { ScheduleProvider } from "./pages/Schedule/contexts/ScheduleContext";
 
 function App() {
   return (
-    <ChakraProvider>
-      <ScheduleProvider>
+    <ScheduleProvider>
+      <ChakraProvider>
         <div
           style={{
             display: "flex",
@@ -19,8 +19,8 @@ function App() {
           <RouterProvider router={router} />
           <GlobalStyle />
         </div>
-      </ScheduleProvider>
-    </ChakraProvider>
+      </ChakraProvider>
+    </ScheduleProvider>
   );
 }
 
