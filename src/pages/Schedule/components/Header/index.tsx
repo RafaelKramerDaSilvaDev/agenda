@@ -4,7 +4,8 @@ import { MessageDisplay } from "../MessageDisplay";
 import { BoxBottom, BoxLeft, BoxRight, HeaderStylized } from "./styles";
 
 export function Header({ gridArea }: { gridArea: string }) {
-  const { setSortOption, setViewOption, insertMockedTasks } = useSchedule();
+  const { setSortOption, setViewOption, insertMockedTasks, deleteAllTasks } =
+    useSchedule();
 
   return (
     <HeaderStylized gridArea={gridArea}>
@@ -13,7 +14,7 @@ export function Header({ gridArea }: { gridArea: string }) {
         <BoxLeft>
           <GenericButton variant="new" onClick={() => setViewOption("new")} />
           <GenericButton variant="build" onClick={insertMockedTasks} />
-          <GenericButton variant="deleteAll" />
+          <GenericButton variant="deleteAll" onClick={deleteAllTasks} />
         </BoxLeft>
         <BoxRight>
           <GenericButton

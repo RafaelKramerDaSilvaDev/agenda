@@ -1,7 +1,6 @@
 import { styled } from "styled-components";
 
 export const Container = styled.div`
-  height: 90%;
   width: 800px;
   margin: 16px;
   padding: 16px;
@@ -18,4 +17,5 @@ export const MainContainer = styled.div`
   grid-template-rows: 84px 1fr;
   gap: 4px;
   overflow: hidden;
+  height: calc(100vh - 84px);
 `;

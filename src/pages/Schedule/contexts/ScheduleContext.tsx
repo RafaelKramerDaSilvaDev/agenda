@@ -23,6 +23,7 @@ type ScheduleContextType = {
   setViewOption(option: ViewOptions): void;
   insertMockedTasks(): void;
   returnToMainView(): void;
+  deleteAllTasks(): void;
 };
 
 const ScheduleContext = createContext<ScheduleContextType>(
@@ -97,6 +98,10 @@ export function ScheduleProvider({ children }: ScheduleProviderProps) {
     setViewOption("main");
   }
 
+  function deleteAllTasks() {
+    setTasks([]);
+  }
+
   return (
     <ScheduleContext.Provider
       value={{
@@ -110,6 +115,7 @@ export function ScheduleProvider({ children }: ScheduleProviderProps) {
         setViewOption,
         insertMockedTasks,
         returnToMainView,
+        deleteAllTasks,
       }}
     >
       {children}
