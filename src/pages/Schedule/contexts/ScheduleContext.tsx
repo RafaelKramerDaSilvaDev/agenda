@@ -1,17 +1,26 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { v4 as uuidv4 } from "uuid";
 import { TaskProps } from "../../../app/types/TaskProps";
 import { toDoList } from "../constraints/toDoList";
 
-type SortOptions = "new" | "ascending" | "descending" | "alphabetical";
+type SortOptions = "ascending" | "descending" | "alphabetical" | "none";
+type ViewOptions = "new" | "edit" | "none";
 
 type ScheduleContextType = {
   tasks: TaskProps[];
   addTask(Task: Omit<TaskProps, "id">): void;
   updateTask(Task: TaskProps): void;
   deleteTask(id: string): void;
-  option: SortOptions;
-  optionSelected(option: SortOptions): void;
+  sortOption: SortOptions;
+  viewOption: ViewOptions;
+  setSortOption(option: SortOptions): void;
+  setViewOption(option: ViewOptions): void;
   insertMockedTasks(): void;
 };
 
@@ -25,10 +34,11 @@ type ScheduleProviderProps = {
 
 export function ScheduleProvider({ children }: ScheduleProviderProps) {
   const [tasks, setTasks] = useState<TaskProps[]>([]);
-  const [option, setOption] = useState<SortOptions>("new");
+  const [sortOption, setSortOption] = useState<SortOptions>("none");
+  const [viewOption, setViewOption] = useState<ViewOptions>("none");
 
   function sortTasks(tasksToSort: TaskProps[]): TaskProps[] {
-    switch (option) {
+    switch (sortOption) {
       case "ascending":
         return [...tasksToSort].sort(
           (a, b) => (a.position || 0) - (b.position || 0)
@@ -43,6 +53,10 @@ export function ScheduleProvider({ children }: ScheduleProviderProps) {
         return tasksToSort;
     }
   }
+
+  useEffect(() => {
+    setTasks((prevTasks) => sortTasks(prevTasks));
+  }, [sortOption]);
 
   function addTask(Task: Omit<TaskProps, "id">) {
     const newTask = {
@@ -69,12 +83,6 @@ export function ScheduleProvider({ children }: ScheduleProviderProps) {
     setTasks(sortTasks([...toDoList]));
   }
 
-  function optionSelected(selectedOption: SortOptions) {
-    setOption(selectedOption);
-    // Once the option is changed, re-sort the tasks.
-    setTasks((prevTasks) => sortTasks(prevTasks));
-  }
-
   return (
     <ScheduleContext.Provider
       value={{
@@ -82,8 +90,10 @@ export function ScheduleProvider({ children }: ScheduleProviderProps) {
         addTask,
         updateTask,
         deleteTask,
-        option,
-        optionSelected,
+        sortOption,
+        viewOption,
+        setSortOption,
+        setViewOption,
         insertMockedTasks,
       }}
     >

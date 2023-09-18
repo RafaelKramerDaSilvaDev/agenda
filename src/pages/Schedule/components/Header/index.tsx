@@ -4,28 +4,28 @@ import { MessageDisplay } from "../MessageDisplay";
 import { BoxBottom, BoxLeft, BoxRight, HeaderStylized } from "./styles";
 
 export function Header({ gridArea }: { gridArea: string }) {
-  const { optionSelected, insertMockedTasks } = useSchedule();
+  const { setSortOption, setViewOption, insertMockedTasks } = useSchedule();
 
   return (
     <HeaderStylized gridArea={gridArea}>
       <MessageDisplay />
       <BoxBottom>
         <BoxLeft>
-          <GenericButton variant="new" onClick={() => optionSelected("new")} />
+          <GenericButton variant="new" onClick={() => setViewOption("new")} />
           <GenericButton variant="build" onClick={insertMockedTasks} />
         </BoxLeft>
         <BoxRight>
           <GenericButton
             variant="sortAlphabetical"
-            onClick={() => optionSelected("alphabetical")}
+            onClick={() => setSortOption("alphabetical")}
           />
           <GenericButton
             variant="sortAscending"
-            onClick={() => optionSelected("ascending")}
+            onClick={() => setSortOption("ascending")}
           />
           <GenericButton
             variant="sortDescending"
-            onClick={() => optionSelected("descending")}
+            onClick={() => setSortOption("descending")}
           />
         </BoxRight>
       </BoxBottom>

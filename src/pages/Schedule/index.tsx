@@ -8,7 +8,7 @@ import { useSchedule } from "./contexts/ScheduleContext";
 import { Container, MainContainer } from "./styles";
 
 export function Schedule() {
-  const { option } = useSchedule();
+  const { viewOption } = useSchedule();
 
   return (
     <MessageDisplayProvider>
@@ -18,8 +18,8 @@ export function Schedule() {
             <Header gridArea="config" />
             <Card gridArea="tasks" />
           </MainContainer>
-          {option === "edit" && <EditTask />}
-          {option === "new" && <NewTask />}
+          {viewOption === "edit" && <EditTask />}
+          {viewOption === "new" && <NewTask />}
         </Container>
       </PassValuesToEditProvider>
     </MessageDisplayProvider>

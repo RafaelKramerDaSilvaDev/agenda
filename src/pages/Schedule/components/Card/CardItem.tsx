@@ -24,11 +24,11 @@ export function CardItem({
   startTime,
   endTime,
 }: TaskProps) {
-  const { optionSelected, deleteTask } = useSchedule();
+  const { setViewOption, deleteTask } = useSchedule();
   const { setTaskValues } = usePassValuesToEdit();
 
   function handleEdit() {
-    optionSelected("edit");
+    setViewOption("edit");
 
     setTaskValues({
       id: id,
