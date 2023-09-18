@@ -10,7 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { InferType, object, string } from "yup";
 import { useSchedule } from "../../contexts/ScheduleContext";
-import { ClearButton, SaveButton } from "../Buttons";
+import { GenericButton } from "../Buttons";
 import { Container } from "./styles";
 
 const schema = object({
@@ -92,8 +92,12 @@ export function NewTask() {
             <Input type="color" w="100px" />
           </FormControl>
           <Box display="flex" gap="4px">
-            <SaveButton title="Salvar Tarefa" />
-            <ClearButton onClick={handleClearInputs} title="Limpar Campos" />
+            <GenericButton variant="save" title="Salvar Tarefa" />
+            <GenericButton
+              variant="clear"
+              onClick={handleClearInputs}
+              title="Limpar Campos"
+            />
           </Box>
         </Stack>
       </Container>

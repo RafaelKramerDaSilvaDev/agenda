@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form";
 import { InferType, object, string } from "yup";
 import { usePassValuesToEdit } from "../../contexts/PassValuesToEditContext";
 import { useSchedule } from "../../contexts/ScheduleContext";
-import { ClearButton, SaveButton } from "../Buttons";
+import { GenericButton } from "../Buttons";
 import { Container } from "./styles";
 
 const schema = object({
@@ -56,7 +56,7 @@ export function EditTask() {
   }, [taskValues]);
 
   function onSubmit(data: FormData) {
-    const newUpdateTask = { id: taskValues.id, ...data };
+    const newUpdateTask = { id: taskValues.id, position: 32, ...data };
     updateTask(newUpdateTask);
   }
 
@@ -106,8 +106,12 @@ export function EditTask() {
             <Input type="color" w="100px" />
           </FormControl>
           <Box display="flex" gap="4px">
-            <SaveButton title="Salvar Tarefa" />
-            <ClearButton onClick={handleClearInputs} title="Limpar Campos" />
+            <GenericButton variant="save" title="Salvar Tarefa" />
+            <GenericButton
+              variant="clear"
+              onClick={handleClearInputs}
+              title="Limpar Campos"
+            />
           </Box>
         </Stack>
       </Container>

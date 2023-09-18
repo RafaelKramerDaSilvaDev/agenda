@@ -4,7 +4,7 @@ import { IoIosJournal } from "react-icons/io";
 import { TaskProps } from "../../../../app/types/TaskProps";
 import { usePassValuesToEdit } from "../../contexts/PassValuesToEditContext";
 import { useSchedule } from "../../contexts/ScheduleContext";
-import { DeleteButton, EditButton } from "../Buttons";
+import { GenericButton } from "../Buttons";
 import {
   AlignIconAndText,
   CardBox,
@@ -19,6 +19,7 @@ import {
 
 export function CardItem({
   id,
+  position,
   name,
   description,
   startTime,
@@ -32,6 +33,7 @@ export function CardItem({
 
     setTaskValues({
       id: id,
+      position: position,
       name: name,
       description: description,
       startTime: startTime,
@@ -63,8 +65,8 @@ export function CardItem({
         </AlignIconAndText>
       </Content>
       <OrganizeButtons>
-        <EditButton onClick={handleEdit} title="Editar Tarefa" />
-        <DeleteButton onClick={() => deleteTask(id)} title="Apagar Tarefa" />
+        <GenericButton variant="edit" onClick={handleEdit} />
+        <GenericButton variant="delete" onClick={() => deleteTask(id)} />
       </OrganizeButtons>
     </CardBox>
   );

@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useContext, useState } from "react";
+import { ReactNode, createContext, useContext, useMemo, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { TaskProps } from "../../../app/types/TaskProps";
 import { toDoList } from "../constraints/toDoList";
@@ -11,6 +11,8 @@ type ScheduleContextType = {
   option: string;
   optionSelected(option: string): void;
   insertMockedTasks(): void;
+  sortAscending(): void;
+  sortDescending(): void;
 };
 
 const ScheduleContext = createContext<ScheduleContextType>(
@@ -24,6 +26,16 @@ type ScheduleProviderProps = {
 export function ScheduleProvider({ children }: ScheduleProviderProps) {
   const [tasks, setTasks] = useState<TaskProps[]>([]);
   const [option, setOption] = useState<string>("new");
+
+  const tasksSortedInAscendingOrder = useMemo(() => {
+    // (a.position || 0) - (b.position || 0)) é usado apenas para garantir que nunca será undefined.
+    return [...tasks].sort((a, b) => (a.position || 0) - (b.position || 0));
+  }, [tasks]);
+
+  const tasksSortedInDescendingOrder = useMemo(() => {
+    // (a.position || 0) - (b.position || 0)) é usado apenas para garantir que nunca será undefined.
+    return [...tasks].sort((a, b) => (b.position || 0) - (a.position || 0));
+  }, [tasks]);
 
   function optionSelected(option: string) {
     setOption(option);
@@ -54,7 +66,15 @@ export function ScheduleProvider({ children }: ScheduleProviderProps) {
   }
 
   function insertMockedTasks() {
-    setTasks([...toDoList]);
+    setTasks(() => [...toDoList]);
+  }
+
+  function sortAscending() {
+    setTasks(() => [...tasksSortedInAscendingOrder]);
+  }
+
+  function sortDescending() {
+    setTasks(() => [...tasksSortedInDescendingOrder]);
   }
 
   return (
@@ -67,6 +87,8 @@ export function ScheduleProvider({ children }: ScheduleProviderProps) {
         option,
         optionSelected,
         insertMockedTasks,
+        sortAscending,
+        sortDescending,
       }}
     >
       {children}
