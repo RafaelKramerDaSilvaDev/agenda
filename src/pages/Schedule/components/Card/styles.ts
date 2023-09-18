@@ -1,7 +1,16 @@
+import { CardProps } from "@chakra-ui/react";
 import { styled } from "styled-components";
 
+export const OrganizeCards = styled.div<CardProps>`
+  grid-area: ${(props) => props.gridArea};
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+  height: 100%;
+  overflow-y: auto;
+`;
+
 export const CardBox = styled.div`
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,7 +18,6 @@ export const CardBox = styled.div`
   color: black;
   transition: all 0.2s;
   background-color: #f8f8ff;
-  cursor: pointer;
   user-select: none;
   width: 100%;
 `;
@@ -45,24 +53,4 @@ export const OrganizeButtons = styled.div`
   padding: 8px;
   margin-right: 8px;
   border-radius: 2px;
-`;
-
-export const OrganizeCards = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  row-gap: 4px;
-`;
-
-const ColorSize = `16px`;
-const Margins = `16px`;
-
-export const Color = styled.div`
-  position: absolute;
-  border-radius: 100%;
-  background-color: green;
-  top: ${Margins};
-  left: ${Margins};
-  width: ${ColorSize};
-  height: ${ColorSize};
 `;

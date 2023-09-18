@@ -5,7 +5,7 @@ import { NewTask } from "./components/NewTask";
 import { MessageDisplayProvider } from "./contexts/MessageDisplayContext";
 import { PassValuesToEditProvider } from "./contexts/PassValuesToEditContext";
 import { useSchedule } from "./contexts/ScheduleContext";
-import { CardContainer, Container } from "./styles";
+import { Container, MainContainer } from "./styles";
 
 export function Schedule() {
   const { option } = useSchedule();
@@ -14,10 +14,10 @@ export function Schedule() {
     <MessageDisplayProvider>
       <PassValuesToEditProvider>
         <Container>
-          <CardContainer>
-            <Header />
-            <Card />
-          </CardContainer>
+          <MainContainer>
+            <Header gridArea="config" />
+            <Card gridArea="tasks" />
+          </MainContainer>
           {option === "edit" && <EditTask />}
           {option === "new" && <NewTask />}
         </Container>

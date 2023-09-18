@@ -1,12 +1,17 @@
+import styled from "styled-components";
 import { useSchedule } from "../../contexts/ScheduleContext";
 import { CardItem } from "./CardItem";
 import { OrganizeCards } from "./styles";
 
-export function Card() {
+export type CardProps = {
+  gridArea?: string;
+};
+
+export function Card({ gridArea }: CardProps) {
   const { tasks } = useSchedule();
 
   return (
-    <OrganizeCards>
+    <OrganizeCards gridArea={gridArea}>
       {tasks?.map((item) => (
         <CardItem
           key={item.id}

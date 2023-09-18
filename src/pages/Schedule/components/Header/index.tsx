@@ -3,12 +3,11 @@ import { GenericButton } from "../Buttons";
 import { MessageDisplay } from "../MessageDisplay";
 import { BoxBottom, BoxLeft, BoxRight, HeaderStylized } from "./styles";
 
-export function Header() {
-  const { optionSelected, insertMockedTasks, sortAscending, sortDescending } =
-    useSchedule();
+export function Header({ gridArea }: { gridArea: string }) {
+  const { optionSelected, insertMockedTasks } = useSchedule();
 
   return (
-    <HeaderStylized>
+    <HeaderStylized gridArea={gridArea}>
       <MessageDisplay />
       <BoxBottom>
         <BoxLeft>
@@ -16,8 +15,18 @@ export function Header() {
           <GenericButton variant="build" onClick={insertMockedTasks} />
         </BoxLeft>
         <BoxRight>
-          <GenericButton variant="sortAscending" onClick={sortAscending} />
-          <GenericButton variant="sortDescending" onClick={sortDescending} />
+          <GenericButton
+            variant="sortAlphabetical"
+            onClick={() => optionSelected("alphabetical")}
+          />
+          <GenericButton
+            variant="sortAscending"
+            onClick={() => optionSelected("ascending")}
+          />
+          <GenericButton
+            variant="sortDescending"
+            onClick={() => optionSelected("descending")}
+          />
         </BoxRight>
       </BoxBottom>
     </HeaderStylized>

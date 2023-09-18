@@ -1,18 +1,18 @@
-import { ReactNode, createContext, useContext, useMemo, useState } from "react";
+import { ReactNode, createContext, useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { TaskProps } from "../../../app/types/TaskProps";
 import { toDoList } from "../constraints/toDoList";
 
+type SortOptions = "new" | "ascending" | "descending" | "alphabetical";
+
 type ScheduleContextType = {
-  tasks: TaskProps[] | undefined;
+  tasks: TaskProps[];
   addTask(Task: Omit<TaskProps, "id">): void;
-  updateTask: (Task: TaskProps) => void;
-  deleteTask: (id: string) => void;
-  option: string;
-  optionSelected(option: string): void;
+  updateTask(Task: TaskProps): void;
+  deleteTask(id: string): void;
+  option: SortOptions;
+  optionSelected(option: SortOptions): void;
   insertMockedTasks(): void;
-  sortAscending(): void;
-  sortDescending(): void;
 };
 
 const ScheduleContext = createContext<ScheduleContextType>(
@@ -25,20 +25,23 @@ type ScheduleProviderProps = {
 
 export function ScheduleProvider({ children }: ScheduleProviderProps) {
   const [tasks, setTasks] = useState<TaskProps[]>([]);
-  const [option, setOption] = useState<string>("new");
+  const [option, setOption] = useState<SortOptions>("new");
 
-  const tasksSortedInAscendingOrder = useMemo(() => {
-    // (a.position || 0) - (b.position || 0)) é usado apenas para garantir que nunca será undefined.
-    return [...tasks].sort((a, b) => (a.position || 0) - (b.position || 0));
-  }, [tasks]);
-
-  const tasksSortedInDescendingOrder = useMemo(() => {
-    // (a.position || 0) - (b.position || 0)) é usado apenas para garantir que nunca será undefined.
-    return [...tasks].sort((a, b) => (b.position || 0) - (a.position || 0));
-  }, [tasks]);
-
-  function optionSelected(option: string) {
-    setOption(option);
+  function sortTasks(tasksToSort: TaskProps[]): TaskProps[] {
+    switch (option) {
+      case "ascending":
+        return [...tasksToSort].sort(
+          (a, b) => (a.position || 0) - (b.position || 0)
+        );
+      case "descending":
+        return [...tasksToSort].sort(
+          (a, b) => (b.position || 0) - (a.position || 0)
+        );
+      case "alphabetical":
+        return [...tasksToSort].sort((a, b) => a.name.localeCompare(b.name));
+      default:
+        return tasksToSort;
+    }
   }
 
   function addTask(Task: Omit<TaskProps, "id">) {
@@ -46,35 +49,30 @@ export function ScheduleProvider({ children }: ScheduleProviderProps) {
       id: uuidv4(),
       ...Task,
     };
-    setTasks((prevTasks) => prevTasks && [...prevTasks, newTask]);
+    const newTasksList = [...tasks, newTask];
+    setTasks(sortTasks(newTasksList));
   }
 
   function updateTask(updatedTask: TaskProps) {
-    setTasks(
-      (prevTasks) =>
-        prevTasks &&
-        prevTasks.map((Task) =>
-          Task.id === updatedTask.id ? updatedTask : Task
-        )
+    const updatedTasksList = tasks.map((Task) =>
+      Task.id === updatedTask.id ? updatedTask : Task
     );
+    setTasks(sortTasks(updatedTasksList));
   }
 
   function deleteTask(id: string) {
-    setTasks(
-      (prevTasks) => prevTasks && prevTasks.filter((Task) => Task.id !== id)
-    );
+    const filteredTasks = tasks.filter((Task) => Task.id !== id);
+    setTasks(sortTasks(filteredTasks));
   }
 
   function insertMockedTasks() {
-    setTasks(() => [...toDoList]);
+    setTasks(sortTasks([...toDoList]));
   }
 
-  function sortAscending() {
-    setTasks(() => [...tasksSortedInAscendingOrder]);
-  }
-
-  function sortDescending() {
-    setTasks(() => [...tasksSortedInDescendingOrder]);
+  function optionSelected(selectedOption: SortOptions) {
+    setOption(selectedOption);
+    // Once the option is changed, re-sort the tasks.
+    setTasks((prevTasks) => sortTasks(prevTasks));
   }
 
   return (
@@ -87,8 +85,6 @@ export function ScheduleProvider({ children }: ScheduleProviderProps) {
         option,
         optionSelected,
         insertMockedTasks,
-        sortAscending,
-        sortDescending,
       }}
     >
       {children}

@@ -11,32 +11,15 @@ export const Container = styled.div`
   padding: 16px;
   border-radius: 2px;
   background-color: #4682b4;
+  overflow-y: hidden;
 `;
 
-export const CardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+export const MainContainer = styled.div`
+  display: grid;
+  grid-template-areas:
+    "config"
+    "tasks";
+  grid-template-rows: 84px 1fr;
   gap: 4px;
-  overflow-y: auto;
-`;
-
-export const BaseButton = `
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 2px;
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
-  
-  
-  &&:hover {
-    scale: 1.04;
-  }
-
-  &&:active {
-    scale: 1.1;
-  }
+  overflow: hidden;
 `;

@@ -10,7 +10,6 @@ import {
   CardBox,
   CardDescription,
   CardName,
-  Color,
   Content,
   EndTimeCard,
   OrganizeButtons,
@@ -43,7 +42,6 @@ export function CardItem({
 
   return (
     <CardBox>
-      <Color />
       <Content>
         <CardName>{name}</CardName>
         <AlignIconAndText>

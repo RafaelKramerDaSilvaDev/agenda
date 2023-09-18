@@ -6,6 +6,7 @@ import {
   BiSolidTrashAlt,
 } from "react-icons/bi";
 import { IoIosArrowDown, IoIosArrowUp, IoMdHammer } from "react-icons/io";
+import { MdOutlineAbc } from "react-icons/md";
 import { PiBroomBold } from "react-icons/pi";
 import { useMessageDisplay } from "../../contexts/MessageDisplayContext";
 import { GenericButtonStylized } from "./styles";
@@ -18,7 +19,8 @@ type ButtonVariant =
   | "clear"
   | "build"
   | "sortAscending"
-  | "sortDescending";
+  | "sortDescending"
+  | "sortAlphabetical";
 
 interface ButtonConfig {
   icon: ReactNode;
@@ -76,6 +78,12 @@ const buttonConfigs: Record<ButtonVariant, ButtonConfig> = {
     backgroundColor: "#D8D9DA",
     message: "Tarefas ordenadas de forma decrescente",
     title: "Ordenar Decrescente",
+  },
+  sortAlphabetical: {
+    icon: <MdOutlineAbc size={32} color="black" />,
+    backgroundColor: "#D8D9DA",
+    message: "Tarefas ordenadas em ordem alfabética",
+    title: "Ordem Alfabética",
   },
 };
 
