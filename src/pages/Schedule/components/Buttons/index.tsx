@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { BiAddToQueue, BiSolidEdit, BiSolidSave } from "react-icons/bi";
 import { IoIosArrowDown, IoIosArrowUp, IoMdHammer } from "react-icons/io";
-import { MdOutlineAbc } from "react-icons/md";
+import { MdCancel, MdOutlineAbc } from "react-icons/md";
 import { PiBroomBold } from "react-icons/pi";
 import { TbTrashFilled, TbTrashXFilled } from "react-icons/tb";
 import { useMessageDisplay } from "../../contexts/MessageDisplayContext";
@@ -17,7 +17,8 @@ type ButtonVariant =
   | "build"
   | "sortAscending"
   | "sortDescending"
-  | "sortAlphabetical";
+  | "sortAlphabetical"
+  | "cancel";
 
 interface ButtonConfig {
   icon: ReactNode;
@@ -87,6 +88,12 @@ const buttonConfigs: Record<ButtonVariant, ButtonConfig> = {
     backgroundColor: "#D8D9DA",
     message: "Ordenação alfabética",
     title: "Ordem Alfabética",
+  },
+  cancel: {
+    icon: <MdCancel size={24} color="white" />,
+    backgroundColor: "#CD5C5C",
+    message: "Cancelado",
+    title: "Cancelar",
   },
 };
 

@@ -113,6 +113,7 @@ export function EditTask() {
               onClick={handleClearInputs}
               title="Limpar Campos"
             />
+            <GenericButton variant="cancel" onClick={returnToMainView} />
           </Box>
         </Stack>
       </Container>
