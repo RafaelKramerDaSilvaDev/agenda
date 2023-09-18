@@ -14,10 +14,12 @@ export function Schedule() {
     <MessageDisplayProvider>
       <PassValuesToEditProvider>
         <Container>
-          <MainContainer>
-            <Header gridArea="config" />
-            <Card gridArea="tasks" />
-          </MainContainer>
+          {viewOption === "main" && (
+            <MainContainer>
+              <Header gridArea="config" />
+              <Card gridArea="tasks" />
+            </MainContainer>
+          )}
           {viewOption === "edit" && <EditTask />}
           {viewOption === "new" && <NewTask />}
         </Container>

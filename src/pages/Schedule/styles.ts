@@ -1,12 +1,8 @@
 import { styled } from "styled-components";
 
 export const Container = styled.div`
-  display: grid;
-  grid-template-areas: "tasks form";
-  grid-template-columns: 50%;
-  column-gap: 16px;
   height: 90%;
-  width: 70%;
+  width: 800px;
   margin: 16px;
   padding: 16px;
   border-radius: 2px;

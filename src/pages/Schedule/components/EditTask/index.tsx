@@ -33,7 +33,7 @@ const schema = object({
 type FormData = InferType<typeof schema>;
 
 export function EditTask() {
-  const { updateTask } = useSchedule();
+  const { updateTask, returnToMainView } = useSchedule();
   const { taskValues } = usePassValuesToEdit();
 
   const {
@@ -58,6 +58,7 @@ export function EditTask() {
   function onSubmit(data: FormData) {
     const newUpdateTask = { id: taskValues.id, position: 32, ...data };
     updateTask(newUpdateTask);
+    returnToMainView();
   }
 
   function handleClearInputs() {

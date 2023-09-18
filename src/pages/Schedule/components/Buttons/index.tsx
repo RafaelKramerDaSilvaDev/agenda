@@ -1,19 +1,16 @@
 import React, { ReactNode } from "react";
-import {
-  BiAddToQueue,
-  BiSolidEdit,
-  BiSolidSave,
-  BiSolidTrashAlt,
-} from "react-icons/bi";
+import { BiAddToQueue, BiSolidEdit, BiSolidSave } from "react-icons/bi";
 import { IoIosArrowDown, IoIosArrowUp, IoMdHammer } from "react-icons/io";
 import { MdOutlineAbc } from "react-icons/md";
 import { PiBroomBold } from "react-icons/pi";
+import { TbTrashFilled, TbTrashXFilled } from "react-icons/tb";
 import { useMessageDisplay } from "../../contexts/MessageDisplayContext";
 import { GenericButtonStylized } from "./styles";
 
 type ButtonVariant =
   | "new"
   | "edit"
+  | "deleteAll"
   | "delete"
   | "save"
   | "clear"
@@ -44,10 +41,16 @@ const buttonConfigs: Record<ButtonVariant, ButtonConfig> = {
     title: "Editar Tarefa",
   },
   delete: {
-    icon: <BiSolidTrashAlt size={20} color="white" />,
+    icon: <TbTrashFilled size={20} color="white" />,
     backgroundColor: "#CD5C5C",
     message: "Tarefa excluída",
     title: "Apagar Tarefa",
+  },
+  deleteAll: {
+    icon: <TbTrashXFilled size={20} color="white" />,
+    backgroundColor: "#CD5C5C",
+    message: "Tarefas Excluídas",
+    title: "Apagar Todas Tarefas",
   },
   save: {
     icon: <BiSolidSave size={20} color="white" />,

@@ -26,7 +26,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding: 16px 48px;
+  padding: 16px;
 `;
 
 export const CardName = styled.div`

@@ -10,7 +10,7 @@ import { TaskProps } from "../../../app/types/TaskProps";
 import { toDoList } from "../constraints/toDoList";
 
 type SortOptions = "ascending" | "descending" | "alphabetical" | "none";
-type ViewOptions = "new" | "edit" | "none";
+type ViewOptions = "main" | "new" | "edit" | "none";
 
 type ScheduleContextType = {
   tasks: TaskProps[];
@@ -22,6 +22,7 @@ type ScheduleContextType = {
   setSortOption(option: SortOptions): void;
   setViewOption(option: ViewOptions): void;
   insertMockedTasks(): void;
+  returnToMainView(): void;
 };
 
 const ScheduleContext = createContext<ScheduleContextType>(
@@ -40,7 +41,7 @@ export function ScheduleProvider({ children }: ScheduleProviderProps) {
 
   const [tasks, setTasks] = useState<TaskProps[]>(initialTasks);
   const [sortOption, setSortOption] = useState<SortOptions>("none");
-  const [viewOption, setViewOption] = useState<ViewOptions>("none");
+  const [viewOption, setViewOption] = useState<ViewOptions>("main");
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -92,6 +93,10 @@ export function ScheduleProvider({ children }: ScheduleProviderProps) {
     setTasks(sortTasks([...toDoList]));
   }
 
+  function returnToMainView() {
+    setViewOption("main");
+  }
+
   return (
     <ScheduleContext.Provider
       value={{
@@ -104,6 +109,7 @@ export function ScheduleProvider({ children }: ScheduleProviderProps) {
         setSortOption,
         setViewOption,
         insertMockedTasks,
+        returnToMainView,
       }}
     >
       {children}

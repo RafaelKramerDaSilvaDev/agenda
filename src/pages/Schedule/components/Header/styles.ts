@@ -8,7 +8,7 @@ export const HeaderStylized = styled.div<{ gridArea: string }>`
   row-gap: 4px;
   border-radius: 2px;
   background-color: #f8f8ff;
-  padding: 8px 24px;
+  padding: 8px 16px;
 `;
 
 export const BoxBottom = styled.div`

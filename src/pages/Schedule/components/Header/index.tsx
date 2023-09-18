@@ -13,6 +13,7 @@ export function Header({ gridArea }: { gridArea: string }) {
         <BoxLeft>
           <GenericButton variant="new" onClick={() => setViewOption("new")} />
           <GenericButton variant="build" onClick={insertMockedTasks} />
+          <GenericButton variant="deleteAll" />
         </BoxLeft>
         <BoxRight>
           <GenericButton

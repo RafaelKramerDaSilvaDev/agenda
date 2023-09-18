@@ -31,7 +31,7 @@ const schema = object({
 type FormData = InferType<typeof schema>;
 
 export function NewTask() {
-  const { addTask } = useSchedule();
+  const { addTask, returnToMainView } = useSchedule();
 
   const {
     register,
@@ -44,6 +44,7 @@ export function NewTask() {
 
   function onSubmit(data: FormData) {
     addTask(data);
+    returnToMainView();
   }
 
   function handleClearInputs() {
