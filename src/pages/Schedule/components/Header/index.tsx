@@ -1,25 +1,15 @@
-import styled from "styled-components";
-import { useMessageDisplay } from "../../contexts/MessageDisplayContext";
 import { useSchedule } from "../../contexts/ScheduleContext";
-// import {
-//   BuildButton,
-//   NewButton,
-//   SortAscendingButton,
-//   SortDescendingButton,
-// } from "../Buttons";
 import { GenericButton } from "../Buttons";
+import { MessageDisplay } from "../MessageDisplay";
 import { BoxBottom, BoxLeft, BoxRight, HeaderStylized } from "./styles";
 
 export function Header() {
   const { optionSelected, insertMockedTasks, sortAscending, sortDescending } =
     useSchedule();
-  const { showMessage } = useMessageDisplay();
 
   return (
     <HeaderStylized>
-      <MessageDisplay>
-        <Text>{showMessage}</Text>
-      </MessageDisplay>
+      <MessageDisplay />
       <BoxBottom>
         <BoxLeft>
           <GenericButton variant="new" onClick={() => optionSelected("new")} />
@@ -33,14 +23,3 @@ export function Header() {
     </HeaderStylized>
   );
 }
-
-const MessageDisplay = styled.div`
-  width: 100%;
-  padding: 4px 16px;
-  background-color: #d8d9da;
-  border-radius: 2px;
-`;
-
-const Text = styled.h1`
-  font-weight: 500;
-`;

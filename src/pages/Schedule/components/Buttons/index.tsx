@@ -32,42 +32,49 @@ const buttonConfigs: Record<ButtonVariant, ButtonConfig> = {
   new: {
     icon: <BiAddToQueue size={20} color="white" />,
     backgroundColor: "#4682b4",
-    message: "Nova tarefa criada",
+    message: "Criando nova tarefa",
     title: "Nova Tarefa",
   },
   edit: {
     icon: <BiSolidEdit size={20} color="white" />,
     backgroundColor: "#DAA520",
+    message: "Editando tarefa",
     title: "Editar Tarefa",
   },
   delete: {
     icon: <BiSolidTrashAlt size={20} color="white" />,
     backgroundColor: "#CD5C5C",
+    message: "Tarefa excluída",
     title: "Apagar Tarefa",
   },
   save: {
     icon: <BiSolidSave size={20} color="white" />,
     backgroundColor: "#3CB371",
+    message: "Tarefa salva",
     title: "Salvar Tarefa",
   },
   clear: {
     icon: <PiBroomBold size={20} color="white" />,
     backgroundColor: "#778899",
-    title: "Limpar Tarefa",
+    message: "Campos apagados",
+    title: "Limpar campos",
   },
   build: {
     icon: <IoMdHammer size={20} color="white" />,
     backgroundColor: "#A0522D",
+    message: "Tarefas geradas",
     title: "Gerar Tarefas",
   },
   sortAscending: {
     icon: <IoIosArrowUp size={20} color="black" />,
-    backgroundColor: "#D8D9DA", // Exemplo de cor
+    backgroundColor: "#D8D9DA",
+    message: "Tarefas ordenadas de forma crescente",
     title: "Ordenar Crescente",
   },
   sortDescending: {
     icon: <IoIosArrowDown size={20} color="black" />,
     backgroundColor: "#D8D9DA",
+    message: "Tarefas ordenadas de forma decrescente",
     title: "Ordenar Decrescente",
   },
 };
