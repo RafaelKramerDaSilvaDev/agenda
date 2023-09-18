@@ -6,7 +6,7 @@ export function MessageDisplay() {
 
   return (
     <MessageDisplayStylized>
-      <Text>Última Alteração: {showMessage}</Text>
+      <Text>{showMessage}</Text>
     </MessageDisplayStylized>
   );
 }

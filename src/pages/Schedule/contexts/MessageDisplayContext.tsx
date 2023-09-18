@@ -14,7 +14,7 @@ type MessageDisplayProps = {
 };
 
 export function MessageDisplayProvider({ children }: MessageDisplayProps) {
-  const [showMessage, setShowMessage] = useState<string>("Nenhuma");
+  const [showMessage, setShowMessage] = useState<string>("Nenhuma alteração");
 
   function setMessage(message: string) {
     setShowMessage(message);
