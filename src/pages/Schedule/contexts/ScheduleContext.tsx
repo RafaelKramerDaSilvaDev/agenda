@@ -33,9 +33,18 @@ type ScheduleProviderProps = {
 };
 
 export function ScheduleProvider({ children }: ScheduleProviderProps) {
-  const [tasks, setTasks] = useState<TaskProps[]>([]);
+  const initialTasks = () => {
+    const storedTasks = localStorage.getItem("tasks");
+    return storedTasks ? JSON.parse(storedTasks) : [];
+  };
+
+  const [tasks, setTasks] = useState<TaskProps[]>(initialTasks);
   const [sortOption, setSortOption] = useState<SortOptions>("none");
   const [viewOption, setViewOption] = useState<ViewOptions>("none");
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   function sortTasks(tasksToSort: TaskProps[]): TaskProps[] {
     switch (sortOption) {
