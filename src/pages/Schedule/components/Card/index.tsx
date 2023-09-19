@@ -1,4 +1,4 @@
-import { Box, Stack } from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react";
 import {
   DragDropContext,
   Draggable,
@@ -24,40 +24,40 @@ export function Card({ gridarea }: CardProps) {
   };
 
   return (
-    <Box gridArea={gridarea} height="100%">
-      <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId="droppableIdForTasks">
-          {(provided) => (
-            <Stack
-              spacing="4px"
-              overflowX="auto"
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-            >
-              {tasks?.map((item, index) => (
-                <Draggable key={item.id} draggableId={item.id} index={index}>
-                  {(provided) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                    >
-                      <CardItem
-                        id={item.id}
-                        name={item.name}
-                        description={item.description}
-                        startTime={item.startTime}
-                        endTime={item.endTime}
-                      />
-                    </div>
-                  )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-            </Stack>
-          )}
-        </Droppable>
-      </DragDropContext>
-    </Box>
+    <DragDropContext onDragEnd={onDragEnd}>
+      <Droppable droppableId="droppableIdForTasks">
+        {(provided) => (
+          <Stack
+            gridArea={gridarea}
+            spacing="4px"
+            overflowY="auto"
+            maxH="100%"
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
+            {tasks?.map((item, index) => (
+              <Draggable key={item.id} draggableId={item.id} index={index}>
+                {(provided) => (
+                  <div
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                  >
+                    <CardItem
+                      id={item.id}
+                      name={item.name}
+                      description={item.description}
+                      startTime={item.startTime}
+                      endTime={item.endTime}
+                    />
+                  </div>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
+          </Stack>
+        )}
+      </Droppable>
+    </DragDropContext>
   );
 }
