@@ -9,12 +9,13 @@ import {
   AlignIconAndText,
   CardBox,
   CardDescription,
-  CardName,
   Content,
   EndTimeCard,
   OrganizeButtons,
   StartTimeCard,
   TaskId,
+  TaskName,
+  TopTaskBox,
 } from "./styles";
 
 export function CardItem({
@@ -44,12 +45,14 @@ export function CardItem({
   return (
     <CardBox>
       <Content>
-        <TaskId title="Identificador Tarefa">{id}</TaskId>
-        <CardName>{name}</CardName>
+        <TopTaskBox>
+          <TaskId title="Identificador Tarefa">{id}</TaskId>
+          <TaskName>{name}</TaskName>
+        </TopTaskBox>
         <AlignIconAndText>
           {description && (
             <Fragment>
-              <IoIosJournal />
+              <IoIosJournal color="#1a202c" />
               <CardDescription>{description}</CardDescription>
             </Fragment>
           )}
@@ -57,7 +60,7 @@ export function CardItem({
         <AlignIconAndText>
           {startTime && (
             <Fragment>
-              <FaClock />
+              <FaClock color="#1a202c" />
               <StartTimeCard>{`${startTime}hrs`}</StartTimeCard>
             </Fragment>
           )}

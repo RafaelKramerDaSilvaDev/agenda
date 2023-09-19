@@ -20,11 +20,13 @@ export const Content = styled.div`
   padding: 16px;
 `;
 
-export const CardName = styled.div`
+export const TaskName = styled.div`
   font-weight: 600;
 `;
 
-export const CardDescription = styled.div``;
+export const CardDescription = styled.div`
+  font-weight: 500;
+`;
 
 export const AlignIconAndText = styled.div`
   display: flex;
@@ -62,4 +64,10 @@ export const TaskId = styled.div`
   line-height: 1;
   font-weight: 800;
   color: white;
+`;
+
+export const TopTaskBox = styled.div`
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
 `;
