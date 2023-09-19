@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
-export const HeaderStylized = styled.div<{ gridArea: string }>`
-  grid-area: ${(props) => props.gridArea};
+export const HeaderStylized = styled.div<{ gridarea: string }>`
+  grid-area: ${(props) => props.gridarea};
 
   display: flex;
   flex-direction: column;

@@ -1,14 +1,4 @@
-import { CardProps } from "@chakra-ui/react";
 import { styled } from "styled-components";
-
-export const OrganizeCards = styled.div<CardProps>`
-  grid-area: ${(props) => props.gridArea};
-  display: flex;
-  flex-direction: column;
-  row-gap: 4px;
-  height: 100%;
-  overflow-y: auto;
-`;
 
 export const CardBox = styled.div`
   display: flex;

@@ -6,7 +6,6 @@ export const Container = styled.div`
   padding: 16px;
   border-radius: 2px;
   background-color: #4682b4;
-  overflow-y: hidden;
 `;
 
 export const MainContainer = styled.div`
@@ -16,6 +15,5 @@ export const MainContainer = styled.div`
     "tasks";
   grid-template-rows: 120px auto;
   gap: 4px;
-  overflow: hidden;
   height: calc(100vh - 84px);
 `;

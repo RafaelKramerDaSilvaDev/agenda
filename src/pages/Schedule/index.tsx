@@ -16,8 +16,8 @@ export function Schedule() {
         <Container>
           {viewOption === "main" && (
             <MainContainer>
-              <Header gridArea="config" />
-              <Card gridArea="tasks" />
+              <Header gridarea="config" />
+              <Card gridarea="tasks" />
             </MainContainer>
           )}
           {viewOption === "edit" && <EditTask />}

@@ -3,9 +3,9 @@ import { DataDisplay } from "./DataDisplay";
 import { LastUpdatedDisplay } from "./LastUpdatedDisplay";
 import { HeaderStylized } from "./styles";
 
-export function Header({ gridArea }: { gridArea: string }) {
+export function Header({ gridarea }: { gridarea: string }) {
   return (
-    <HeaderStylized gridArea={gridArea}>
+    <HeaderStylized gridarea={gridarea}>
       <LastUpdatedDisplay />
       <DataDisplay />
       <ConfigurationButtons />

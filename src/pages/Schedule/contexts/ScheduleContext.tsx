@@ -13,6 +13,7 @@ type ViewOptions = "main" | "new" | "edit" | "none";
 
 type ScheduleContextType = {
   tasks: TaskProps[];
+  setTasks: React.Dispatch<React.SetStateAction<TaskProps[]>>;
   addTask(Task: Omit<TaskProps, "id">): void;
   updateTask(Task: TaskProps): void;
   deleteTask(id: string): void;
@@ -23,6 +24,7 @@ type ScheduleContextType = {
   insertMockedTasks(): void;
   returnToMainView(): void;
   deleteAllTasks(): void;
+  reorderTasks(startIndex: number, endIndex: number): void;
 };
 
 const ScheduleContext = createContext<ScheduleContextType>(
@@ -104,10 +106,19 @@ export function ScheduleProvider({ children }: ScheduleProviderProps) {
     setTasks([]);
   }
 
+  function reorderTasks(startIndex: number, endIndex: number) {
+    const result = Array.from(tasks);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+
+    setTasks(result);
+  }
+
   return (
     <ScheduleContext.Provider
       value={{
         tasks,
+        setTasks,
         addTask,
         updateTask,
         deleteTask,
@@ -118,6 +129,7 @@ export function ScheduleProvider({ children }: ScheduleProviderProps) {
         insertMockedTasks,
         returnToMainView,
         deleteAllTasks,
+        reorderTasks,
       }}
     >
       {children}
