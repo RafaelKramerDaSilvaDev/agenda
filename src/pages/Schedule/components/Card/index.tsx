@@ -16,7 +16,7 @@ export type CardProps = {
 
 export function Card({ gridarea }: CardProps) {
   // reorderTasks é uma função que altera a ordem dos itens na lista
-  const { tasks, reorderTasks } = useSchedule();
+  const { tasks, reorderTasks, sortOption } = useSchedule();
 
   // Função executada após um item ser arrastado e solto
   const onDragEnd = (result: DropResult) => {
@@ -40,14 +40,18 @@ export function Card({ gridarea }: CardProps) {
             gridArea={gridarea}
             spacing="4px"
             overflowY="auto"
-            maxH="100%"
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
             {/* Renderizando cada tarefa como um item que pode ser arrastado */}
             {tasks?.map((item, index) => (
               // Definindo a área que pode ser arrastada
-              <Draggable key={item.id} draggableId={item.id} index={index}>
+              <Draggable
+                key={item.id}
+                draggableId={item.id}
+                index={index}
+                isDragDisabled={sortOption === "personalized" ? false : true}
+              >
                 {(provided) => (
                   <div
                     ref={provided.innerRef}

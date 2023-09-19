@@ -14,7 +14,10 @@ export function ConfigurationButtons() {
         <GenericButton variant="deleteAll" onClick={deleteAllTasks} />
       </BoxLeft>
       <BoxRight>
-        <GenericButton variant="custom" />
+        <GenericButton
+          variant="custom"
+          onClick={() => setSortOption("personalized")}
+        />
         <GenericButton
           variant="sortAlphabetical"
           onClick={() => setSortOption("alphabetical")}

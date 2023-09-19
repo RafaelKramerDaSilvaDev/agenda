@@ -8,7 +8,12 @@ import {
 import { TaskProps } from "../../../app/types/TaskProps";
 import { toDoList } from "../constraints/toDoList";
 
-type SortOptions = "ascending" | "descending" | "alphabetical" | "none";
+type SortOptions =
+  | "ascending"
+  | "descending"
+  | "alphabetical"
+  | "none"
+  | "personalized";
 type ViewOptions = "main" | "new" | "edit" | "none";
 
 type ScheduleContextType = {

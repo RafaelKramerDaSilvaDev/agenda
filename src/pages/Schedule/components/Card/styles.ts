@@ -10,6 +10,7 @@ export const CardBox = styled.div`
   background-color: #f8f8ff;
   user-select: none;
   width: 100%;
+  color: #1a202c;
 `;
 
 export const Content = styled.div`
