@@ -5,7 +5,6 @@ import {
   useEffect,
   useState,
 } from "react";
-import { v4 as uuidv4 } from "uuid";
 import { TaskProps } from "../../../app/types/TaskProps";
 import { toDoList } from "../constraints/toDoList";
 
@@ -70,8 +69,11 @@ export function ScheduleProvider({ children }: ScheduleProviderProps) {
   }, [sortOption]);
 
   function addTask(Task: Omit<TaskProps, "id">) {
+    const lastTask = tasks.length + 1;
+    console.log(lastTask);
+
     const newTask = {
-      id: uuidv4(),
+      id: String(lastTask),
       ...Task,
     };
     const newTasksList = [...tasks, newTask];

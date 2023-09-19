@@ -54,3 +54,21 @@ export const OrganizeButtons = styled.div`
   margin-right: 8px;
   border-radius: 2px;
 `;
+
+const size = "32px";
+
+export const TaskId = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  width: ${size};
+  height: ${size};
+  background-color: #64ccc5;
+  padding: 4px;
+
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 800;
+  color: white;
+`;

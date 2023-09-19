@@ -14,6 +14,7 @@ import {
   EndTimeCard,
   OrganizeButtons,
   StartTimeCard,
+  TaskId,
 } from "./styles";
 
 export function CardItem({
@@ -43,6 +44,7 @@ export function CardItem({
   return (
     <CardBox>
       <Content>
+        <TaskId title="Identificador Tarefa">{id}</TaskId>
         <CardName>{name}</CardName>
         <AlignIconAndText>
           {description && (
