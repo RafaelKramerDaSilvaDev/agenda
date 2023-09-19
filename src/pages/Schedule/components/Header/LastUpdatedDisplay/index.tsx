@@ -1,4 +1,4 @@
-import { useDisplay } from "../../contexts/DisplayContext";
+import { useDisplay } from "../../../contexts/DisplayContext";
 import { LastUpdatedDisplayStylized, Text } from "./styles";
 
 export function LastUpdatedDisplay() {

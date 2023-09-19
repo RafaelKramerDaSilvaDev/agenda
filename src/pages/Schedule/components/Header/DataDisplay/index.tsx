@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import { useDisplay } from "../../contexts/DisplayContext";
+import { useDisplay } from "../../../contexts/DisplayContext";
 import { DataBox, TaskQuantityDataBox, Text } from "./styles";
 
 export function DataDisplay() {

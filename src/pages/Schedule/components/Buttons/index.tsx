@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import { BiAddToQueue, BiSolidEdit, BiSolidSave } from "react-icons/bi";
+import { BsPersonFillGear } from "react-icons/bs";
 import { IoIosArrowDown, IoIosArrowUp, IoMdHammer } from "react-icons/io";
 import { MdCancel, MdOutlineAbc } from "react-icons/md";
 import { PiBroomBold } from "react-icons/pi";
@@ -18,7 +19,8 @@ type ButtonVariant =
   | "sortAscending"
   | "sortDescending"
   | "sortAlphabetical"
-  | "cancel";
+  | "cancel"
+  | "custom";
 
 interface ButtonConfig {
   icon: ReactNode;
@@ -65,7 +67,7 @@ const buttonConfigs: Record<ButtonVariant, ButtonConfig> = {
     title: "Limpar campos",
   },
   build: {
-    icon: <IoMdHammer size={20} color="white" />,
+    icon: <IoMdHammer size={18} color="white" />,
     backgroundColor: "#A0522D",
     message: "Tarefas geradas",
     title: "Gerar Tarefas",
@@ -85,14 +87,20 @@ const buttonConfigs: Record<ButtonVariant, ButtonConfig> = {
   sortAlphabetical: {
     icon: <MdOutlineAbc size={32} color="black" />,
     backgroundColor: "#D8D9DA",
-    message: "Ordenação alfabética",
-    title: "Ordem Alfabética",
+    message: "Ordenação alfabetica",
+    title: "Ordenar Alfabeticamente",
   },
   cancel: {
     icon: <MdCancel size={24} color="white" />,
     backgroundColor: "#CD5C5C",
     message: "Cancelado",
     title: "Cancelar",
+  },
+  custom: {
+    icon: <BsPersonFillGear size={20} />,
+    backgroundColor: "#D8D9DA",
+    message: "Ordenação personalizada",
+    title: "Ordenar Personalizado",
   },
 };
 

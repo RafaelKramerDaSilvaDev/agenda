@@ -10,25 +10,3 @@ export const HeaderStylized = styled.div<{ gridArea: string }>`
   background-color: #f8f8ff;
   padding: 8px 16px;
 `;
-
-export const BoxBottom = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const baseBoxButtons = `
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  gap: 4px;
-`;
-
-export const BoxLeft = styled.div`
-  ${baseBoxButtons}
-  justify-content: flex-start;
-`;
-
-export const BoxRight = styled.div`
-  ${baseBoxButtons}
-  justify-content: flex-end;
-`;
