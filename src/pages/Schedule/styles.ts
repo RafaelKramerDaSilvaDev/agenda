@@ -14,7 +14,7 @@ export const MainContainer = styled.div`
   grid-template-areas:
     "config"
     "tasks";
-  grid-template-rows: 84px 1fr;
+  grid-template-rows: 120px auto;
   gap: 4px;
   overflow: hidden;
   height: calc(100vh - 84px);

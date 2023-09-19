@@ -1,6 +1,7 @@
 import { useSchedule } from "../../contexts/ScheduleContext";
 import { GenericButton } from "../Buttons";
-import { MessageDisplay } from "../MessageDisplay";
+import { DataDisplay } from "../DataDisplay";
+import { LastUpdatedDisplay } from "../LastUpdatedDisplay";
 import { BoxBottom, BoxLeft, BoxRight, HeaderStylized } from "./styles";
 
 export function Header({ gridArea }: { gridArea: string }) {
@@ -9,7 +10,8 @@ export function Header({ gridArea }: { gridArea: string }) {
 
   return (
     <HeaderStylized gridArea={gridArea}>
-      <MessageDisplay />
+      <LastUpdatedDisplay />
+      <DataDisplay />
       <BoxBottom>
         <BoxLeft>
           <GenericButton variant="new" onClick={() => setViewOption("new")} />

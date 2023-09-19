@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MessageDisplayStylized = styled.div`
+export const LastUpdatedDisplayStylized = styled.div`
   width: 100%;
   padding: 4px 16px;
   background-color: #d8d9da;

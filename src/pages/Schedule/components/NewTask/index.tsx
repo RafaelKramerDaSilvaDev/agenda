@@ -18,11 +18,20 @@ const schema = object({
   description: string(),
   startTime: string(),
   endTime: string().test(
-    "is-later",
-    "O horário de término deve ser posterior ao horário de início.",
+    "is-later", // Nome do teste
+    "O horário de término deve ser posterior ao horário de início.", // Mensagem de erro
+    // Função de validação personalizada para o campo endTime
     function (value) {
+      // `this.parent` acessa o objeto que contém todos os campos do schema
+      // Desestruturamos o objeto para extrair o valor do campo startTime
       const { startTime } = this.parent;
+
+      // Verifica se o value (endTime) ou startTime estão indefinidos ou têm valores falsy
+      // Se qualquer um deles estiver, a validação é considerada bem-sucedida e retorna true
       if (!value || !startTime) return true;
+
+      // Compara os valores de endTime e startTime
+      // Retorna true se endTime for maior que startTime, caso contrário retorna false
       return value > startTime;
     }
   ),
