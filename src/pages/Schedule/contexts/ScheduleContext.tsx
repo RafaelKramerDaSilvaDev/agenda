@@ -106,11 +106,24 @@ export function ScheduleProvider({ children }: ScheduleProviderProps) {
     setTasks([]);
   }
 
+  /**
+   * Reordena a lista de tarefas com base nos índices inicial e final.
+   *
+   * @param startIndex - O índice da tarefa que foi arrastada.
+   * @param endIndex - O índice onde a tarefa foi solta.
+   */
   function reorderTasks(startIndex: number, endIndex: number) {
+    // Criando uma cópia da lista de tarefas atual
     const result = Array.from(tasks);
+
+    // Removendo a tarefa do índice inicial (startIndex) da lista copiada
+    // O método splice retorna um array dos itens removidos, então [removed] captura o item único removido
     const [removed] = result.splice(startIndex, 1);
+
+    // Inserindo o item removido na posição endIndex da lista copiada
     result.splice(endIndex, 0, removed);
 
+    // Atualizando o estado das tarefas com a lista reordenada
     setTasks(result);
   }
 
