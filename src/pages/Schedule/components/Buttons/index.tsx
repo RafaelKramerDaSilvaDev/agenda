@@ -108,13 +108,13 @@ const buttonConfigs: Record<ButtonVariant, ButtonConfig> = {
 	checked: {
 		icon: <ImCheckboxChecked size={18} color='white' />,
 		backgroundColor: '#3CB371',
-		message: 'Tarefa concluída',
+		message: 'Tarefa alterada para não concluída',
 		title: 'Marcar concluída',
 	},
 	unchecked: {
 		icon: <ImCheckboxUnchecked size={18} color='white' />,
 		backgroundColor: '#3CB371',
-		message: 'Tarefa alterada para não concluída',
+		message: 'Tarefa concluída',
 		title: 'Marcar como não concluída',
 	},
 };

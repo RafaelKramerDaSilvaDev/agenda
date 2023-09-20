@@ -71,3 +71,8 @@ export const TopTaskBox = styled.div`
 	align-items: center;
 	column-gap: 8px;
 `;
+
+export const TaskStylized = styled.div`
+	padding: 8px;
+	overflow-y: auto;
+`;
