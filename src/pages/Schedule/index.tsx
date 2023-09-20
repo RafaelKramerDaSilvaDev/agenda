@@ -1,7 +1,7 @@
 import { EditTask } from './components/EditTask';
 import { Header } from './components/Header';
 import { NewTask } from './components/NewTask';
-import { Task } from './components/Task';
+import { Tasks } from './components/Tasks';
 import { DisplayProvider } from './contexts/DisplayContext';
 import { PassValuesToEditProvider } from './contexts/PassValuesToEditContext';
 import { useSchedule } from './contexts/ScheduleContext';
@@ -17,7 +17,7 @@ export function Schedule() {
 					{viewOption === 'main' && (
 						<MainContainer>
 							<Header gridarea='config' />
-							<Task gridarea='tasks' />
+							<Tasks gridarea='tasks' />
 						</MainContainer>
 					)}
 					{viewOption === 'edit' && <EditTask />}

@@ -1,5 +1,7 @@
 import { Stack } from '@chakra-ui/react';
+import { useRef } from 'react';
 import { DragDropContext, Draggable, DropResult, Droppable } from 'react-beautiful-dnd';
+import dragSound from '../../../../app/assets/sounds/one.mp3';
 import { useSchedule } from '../../contexts/ScheduleContext';
 import { TaskItem } from './TaskItem';
 import { TaskStylized } from './styles';
@@ -10,7 +12,7 @@ export type TaskProps = {
 
 // Importante: a biblioteca react-beautiful-dnd não funciona com Strict Mode
 
-export function Task({ gridarea }: TaskProps) {
+export function Tasks({ gridarea }: TaskProps) {
 	// reorderTasks é uma função que altera a ordem dos itens na lista
 	const { tasks, reorderTasks, sortOption } = useSchedule();
 
@@ -25,10 +27,20 @@ export function Task({ gridarea }: TaskProps) {
 		reorderTasks(result.source.index, result.destination.index);
 	};
 
+	const audioRef = useRef<HTMLAudioElement | null>(null);
+
+	const playDragSound = () => {
+		if (audioRef.current) {
+			audioRef.current.play();
+		}
+	};
+
 	return (
 		<TaskStylized>
+			<audio ref={audioRef} src={dragSound} preload='auto'></audio>
+
 			{/* Componente que envolve toda a funcionalidade de arrastar e soltar*/}
-			<DragDropContext onDragEnd={onDragEnd}>
+			<DragDropContext onDragEnd={onDragEnd} onDragStart={playDragSound}>
 				{/* Área onde os itens podem ser soltos após o arrasto */}
 				<Droppable droppableId='droppableIdForTasks'>
 					{(provided) => (
