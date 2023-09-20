@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const baseDataBox = `
   width: 100%;
@@ -7,17 +7,13 @@ const baseDataBox = `
   border-radius: 2px;
 `;
 
-export const TaskQuantityDataBox = styled.div`
-  ${baseDataBox}
-  display: flex;
-  justify-content: center;
-  width: 64px;
-`;
-
-export const DataBox = styled.div`
-  ${baseDataBox}
-`;
-
-export const Text = styled.h1`
-  font-weight: 500;
+export const DataBox = styled.div<{ w?: string }>`
+	${baseDataBox}
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	column-gap: 8px;
+	font-weight: 500;
+	width: ${(props) => props.w};
+	line-height: 1;
 `;

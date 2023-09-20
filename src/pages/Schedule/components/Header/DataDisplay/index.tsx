@@ -1,15 +1,22 @@
-import { Box } from "@chakra-ui/react";
-import { useDisplay } from "../../../contexts/DisplayContext";
-import { TaskQuantityDataBox, Text } from "./styles";
+import { Box } from '@chakra-ui/react';
+import { BiListCheck } from 'react-icons/bi';
+import { useDisplay } from '../../../contexts/DisplayContext';
+import { DataBox } from './styles';
+import { FaCheckDouble } from 'react-icons/fa';
 
 export function DataDisplay() {
-  const { taskQuantity } = useDisplay();
+	const { taskQuantity, quantityChecked } = useDisplay();
 
-  return (
-    <Box display="flex" gap="4px">
-      <TaskQuantityDataBox title="Total Tarefas">
-        <Text>{taskQuantity}</Text>
-      </TaskQuantityDataBox>
-    </Box>
-  );
+	return (
+		<Box display='flex' gap='4px'>
+			<DataBox title='Total Tarefas'>
+				<BiListCheck size={26} />
+				{taskQuantity}
+			</DataBox>
+			<DataBox title='Tarefas Concluídas'>
+				<FaCheckDouble size={14} />
+				{quantityChecked}
+			</DataBox>
+		</Box>
+	);
 }
