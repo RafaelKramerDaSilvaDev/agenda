@@ -1,7 +1,6 @@
 import { Stack } from '@chakra-ui/react';
-import { useRef } from 'react';
 import { DragDropContext, Draggable, DropResult, Droppable } from 'react-beautiful-dnd';
-import dragSound from '../../../../app/assets/sounds/one.mp3';
+import clickSound from '../../../../app/assets/sounds/click.mp3';
 import { useSchedule } from '../../contexts/ScheduleContext';
 import { TaskItem } from './TaskItem';
 import { TaskStylized } from './styles';
@@ -25,20 +24,17 @@ export function Tasks({ gridarea }: TaskProps) {
 
 		// Reordenando a lista com base na origem e no destino do arrasto
 		reorderTasks(result.source.index, result.destination.index);
+		playDragSound();
 	};
 
-	const audioRef = useRef<HTMLAudioElement | null>(null);
+	const audio = new Audio(clickSound);
 
-	const playDragSound = () => {
-		if (audioRef.current) {
-			audioRef.current.play();
-		}
-	};
+	function playDragSound() {
+		audio.play();
+	}
 
 	return (
 		<TaskStylized>
-			<audio ref={audioRef} src={dragSound} preload='auto'></audio>
-
 			{/* Componente que envolve toda a funcionalidade de arrastar e soltar*/}
 			<DragDropContext onDragEnd={onDragEnd} onDragStart={playDragSound}>
 				{/* Área onde os itens podem ser soltos após o arrasto */}

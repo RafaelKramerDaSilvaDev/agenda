@@ -6,6 +6,7 @@ import { IoIosArrowDown, IoIosArrowUp, IoMdHammer } from 'react-icons/io';
 import { MdCancel, MdOutlineAbc } from 'react-icons/md';
 import { PiBroomBold } from 'react-icons/pi';
 import { TbTrashFilled, TbTrashXFilled } from 'react-icons/tb';
+import clickSound from '../../../../app/assets/sounds/click.mp3';
 import { useDisplay } from '../../contexts/DisplayContext';
 import { GenericButtonStylized } from './styles';
 
@@ -124,6 +125,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 function GenericButton({ variant, onClick, ...props }: ButtonProps) {
+	const audio = new Audio(clickSound);
 	const { setLastUpdated } = useDisplay();
 	// buttonsConfig é um objeto que acessa seu valor usando a chave variant que é uma string
 	const config = buttonConfigs[variant];
@@ -137,6 +139,7 @@ function GenericButton({ variant, onClick, ...props }: ButtonProps) {
 			// Executa a função onClick passando o evento como parâmetro
 			onClick(event);
 		}
+		audio.play();
 	}
 
 	return (
