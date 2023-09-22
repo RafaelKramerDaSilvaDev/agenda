@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
 import { TaskProps } from '../../../app/types/TaskProps';
-import { toDoList } from '../constraints/toDoList';
+import { toDoList } from '../constants/toDoList';
 
 type SortOptions = 'ascending' | 'descending' | 'alphabetical' | 'none' | 'personalized';
 type ViewOptions = 'main' | 'new' | 'edit' | 'none';
